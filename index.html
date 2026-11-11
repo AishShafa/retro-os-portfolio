@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- Portfolio page for Aishath Shafa, styled as a tiny iMac running a playful desktop OS -->
+<!-- Feature content lives in separate HTML pages; shared and feature-specific styles load from styles/. -->
+<html lang="en">
+
+<head>
+  <!-- Character encoding for all text on the page -->
+  <meta charset="utf-8">
+
+  <!-- Responsive viewport, viewport-fit cover lets the page draw behind phone system bars -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Aishath Shafa</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
+  <!-- Sticky note fonts: Nothing You Could Do (titles) and Poppins (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts: Abril Fatface (heading fallback) and DM Sans (body text) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;500;700&family=VT323&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles/loading-screen.css">
+</head>
+
+<body>
+  <iframe class="loading-screen" id="loading-screen" src="./loading-screen.html" title="Loading portfolio" tabindex="-1"></iframe>
+
+  <!-- Page greeting 
+  <h1>Hi, I’m Shafa!</h1>-->
+
+  <!-- iMac wrapper, the screen sits inside and the iMac artwork is drawn on top -->
+  <div class="imac">
+
+    <!-- Screen area that clips the virtual OS -->
+    <div class="scr" id="scr">
+
+      <!-- Virtual OS root, JavaScript scales it to fit the screen -->
+      <div class="os" id="os">
+
+        <!-- Decorative clouds at the bottom of the desktop -->
+        <div class="cl" style="left:250px; bottom:-460px; width:560px; height:150px"></div>
+        <div class="cl" style="left:210px; bottom:-380px; width:920px; height:130px"></div>
+        <div class="cl" style="left:330px; bottom:-330px; width:790px; height:120px; opacity:.7"></div>
+
+        <!-- Menu bar with the name on the left and social links on the right -->
+        <div class="bar">
+          <!-- Keep these inline elements on one line so no stray spaces appear -->
+          <div class="t"><b>AISHATH SHAFA</b><i>•</i><span>SOFTWARE ENGINEER</span></div>
+
+          <div class="so">
+            <!-- Email link that opens the visitor's mail app -->
+            <a href="mailto:aishathshafaofficial@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 7.2L4.5 7v.2L12 13l7.5-5.8V7z"/>
+              </svg>
+            </a>
+            <!-- GitHub profile, opens in a new tab -->
+            <a href="https://github.com/AishShafa" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+            <!-- LinkedIn profile, opens in a new tab -->
+            <a href="https://www.linkedin.com/in/aishathshafa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation instructions, draggable -->
+        <section class="note n1">
+          <h2>How to explore</h2>
+          <p>Click a desktop icon to open it. Click a project name to visit its live site.</p>
+        </section>
+
+        <!-- Quick controls, draggable -->
+        <section class="note n2">
+          <h2>Quick controls</h2>
+          <p>Drag notes or the music player to move them. Tap ⤢ to expand the screen.</p>
+          <p class="note-hint">Tap × in a window’s top-right corner to close it. The player starts minimized.</p>
+        </section>
+
+        <!-- Desktop icon that opens the Projects window -->
+        <div class="ic" tabindex="0" role="button" data-w="projects" style="left:12px; top:64px">
+          <div class="th">
+            <div class="f">
+              <img
+                src="./assets/icons/folder-closed.png"
+                alt=""
+              >
+            </div>
+          </div>
+          <div class="nm">Projects</div>
+          <div class="mt">3 projects</div>
+        </div>
+
+        <!-- Desktop icon that downloads the CV -->
+        <div class="ic" tabindex="0" role="button" data-w="resume" style="left:110px; top:64px">
+          <div class="pdf">
+            <div class="tg"></div>
+            <u></u>
+            <u style="width:70%"></u>
+            <u></u>
+            <u style="width:50%"></u>
+          </div>
+          <div class="nm">cv.pdf</div>
+        </div>
+
+        <!-- Desktop icon that opens the About window -->
+        <div class="ic" tabindex="0" role="button" data-w="about" style="left:12px; top:155px">
+          <div class="th">
+            <div class="f">
+              <img
+                src="./assets/icons/folder-closed.png"
+                alt=""
+                style="object-position:50% 20%"
+              >
+            </div>
+          </div>
+          <div class="nm">About me</div>
+          <div class="mt">Say hello</div>
+        </div>
+
+        <!-- Desktop icon that opens the Experience window -->
+        <div class="ic" tabindex="0" role="button" data-w="experience" style="left:110px; top:155px">
+          <div class="th">
+            <div class="f g1"><span class="em">💼</span></div>
+          </div>
+          <div class="nm">Experience</div>
+          <div class="mt">3 items</div>
+        </div>
+
+        <!-- Desktop icon that opens the Education window -->
+        <div class="ic" tabindex="0" role="button" data-w="education" style="left:12px; top:246px">
+          <div class="th">
+            <div class="f g3"><span class="em">🎓</span></div>
+          </div>
+          <div class="nm">Education</div>
+          <div class="mt">1 item</div>
+        </div>
+
+        <!-- Desktop icon that opens the Skills window -->
+        <div class="ic" tabindex="0" role="button" data-w="skills" style="left:110px; top:246px">
+          <div class="th">
+            <div class="f g2"><span class="em">⌨️</span></div>
+          </div>
+          <div class="nm">Skills</div>
+          <div class="mt">6 groups</div>
+        </div>
+
+        <!-- Desktop icon that opens the Contact window -->
+        <div class="ic" tabindex="0" role="button" data-w="contact" style="left:12px; top:337px">
+          <div class="th">
+            <div class="f g5"><span class="em">✉️</span></div>
+          </div>
+          <div class="nm">Contact</div>
+          <div class="mt">Let’s work together</div>
+        </div>
+
+        <!-- Pop up windows, each id matches the data-w value of a desktop icon -->
+
+        <!-- Projects window -->
+        <div class="win" id="w-projects" role="dialog" aria-label="Projects">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            Projects
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./projects.html?embed=1" title="Projects" loading="lazy"></iframe></div>
+        </div>
+
+        <!-- Work experience window -->
+        <div class="win" id="w-experience" role="dialog" aria-label="Work experience">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            Work experience
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./experience.html?embed=1" title="Work experience" loading="lazy"></iframe></div>
+        </div>
+
+        <!-- Higher education window -->
+        <div class="win" id="w-education" role="dialog" aria-label="Higher education">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            Higher education
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./education.html?embed=1" title="Higher education" loading="lazy"></iframe></div>
+        </div>
+        <!-- Professional skills window -->
+        <div class="win" id="w-skills" role="dialog" aria-label="Professional skills">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            Professional skills
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./skills.html?embed=1" title="Professional skills" loading="lazy"></iframe></div>
+        </div>
+
+        <!-- About me window -->
+        <div class="win" id="w-about" role="dialog" aria-label="About me">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            About me
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./about.html?embed=1" title="About me" loading="lazy"></iframe></div>
+        </div>
+
+        <!-- Contact window -->
+        <div class="win" id="w-contact" role="dialog" aria-label="Contact">
+          <div class="wh">
+            <button data-x aria-label="Close"></button>
+            Let’s work together
+          </div>
+          <div class="wc feature-host"><iframe class="feature-frame" src="./contact.html?embed=1" title="Contact" loading="lazy"></iframe></div>
+        </div>
+
+        <div class="download-scrim" id="download-scrim" aria-hidden="true"></div>
+        <div
+          class="download-notice"
+          id="download-notice"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="download-title"
+          aria-describedby="download-message"
+        >
+          <h2 id="download-title">CV downloaded</h2>
+          <p id="download-message">Your CV was saved as <strong>cv.pdf</strong>.</p>
+          <button class="btn" id="download-ok" type="button">Got it</button>
+        </div>
+
+        <!-- macOS-style launch dock using the supplied pixel-art asset set -->
+        <nav class="mac-dock" aria-label="App dock">
+          <div class="dock-shelf" id="mac-dock">
+            <button class="dock-item" type="button" data-dock-window="projects" aria-label="Open Projects">
+              <span class="dock-tooltip">Projects</span>
+              <img src="./assets/icons/folder-open.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <button class="dock-item" type="button" data-dock-window="about" aria-label="Open About">
+              <span class="dock-tooltip">About</span>
+              <img src="./assets/icons/this-computer.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <button class="dock-item" type="button" data-dock-action="resume" aria-label="Download CV">
+              <span class="dock-tooltip">CV</span>
+              <img src="./assets/icons/text-file.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <button class="dock-item" type="button" data-dock-window="experience" aria-label="Open Experience">
+              <span class="dock-tooltip">Experience</span>
+              <img src="./assets/icons/clock.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <button class="dock-item" type="button" data-dock-window="skills" aria-label="Open Skills">
+              <span class="dock-tooltip">Skills</span>
+              <img src="./assets/icons/tools.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <span class="dock-divider" aria-hidden="true"></span>
+            <button class="dock-item" type="button" data-dock-action="music" aria-label="Toggle music player">
+              <span class="dock-tooltip">Music</span>
+              <img src="./assets/icons/music.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+            <button class="dock-item" type="button" data-dock-window="contact" aria-label="Open Contact">
+              <span class="dock-tooltip">Contact</span>
+              <img src="./assets/icons/mail.png" alt="" draggable="false">
+              <span class="dock-indicator" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+    </div>
+
+    <!-- Expand control stays outside the screen and OS content. -->
+    <button class="fs" id="fs" aria-label="Expand screen to full size" title="Full screen">⤢</button>
+
+    <!-- iMac artwork drawn over the screen, the screen shows through its glass area -->
+    <img
+      src="./assets/imac-current.webp"
+      alt=""
+    >
+  </div>
+
+  <!-- Draggable, minimisable music player is hosted in music-player.html. -->
+  <iframe class="mp music-frame" id="mp" src="./music-player.html" title="Music player" loading="eager" allow="autoplay"></iframe>
+
+  <script src="./script.js" defer></script>
+</body>
+
+</html>

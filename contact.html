@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aishath Shafa</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles/feature-page.css">
+  <link rel="stylesheet" href="./styles/contact.css">
+  <script src="./scripts/feature-size.js" defer></script>
+</head>
+<body class="feature-page feature-contact">
+  <main class="wc feature-content">
+            <div class="contact-grid">
+              <form id="f" class="contact-form">
+                <div class="contact-fields">
+                  <label>Your name<input name="n" placeholder="Your Name" required autocomplete="name"></label>
+                  <label>Email<input name="e" type="email" placeholder="your@email.com" required autocomplete="email"></label>
+                  <label class="contact-wide">Company<input name="company" placeholder="Optional" autocomplete="organization"></label>
+                  <label class="contact-wide">What do you need?<input name="need" placeholder="Optional"></label>
+                  <label class="contact-wide">Tell me about the project<textarea name="m" rows="3" placeholder="What are you making, who is it for, and when does it need to be ready?" required></textarea></label>
+                </div>
+                <button class="btn" type="submit"><span>Send message</span><span aria-hidden="true">↗</span></button>
+              </form>
+            </div>
+          
+  </main>
+  <script src="./scripts/contact.js" defer></script>
+</body>
+</html>

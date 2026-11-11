@@ -1,0 +1,1462 @@
+
+    /* ---------- Fonts ---------- */
+
+
+    /* ---------- Theme variables and page safe areas ---------- */
+
+    /* Light theme colours, plus padding that keeps content clear of phone notches */
+    :root {
+      /* Main text colour */
+      --ink: #4a0a1c;
+      /* Primary accent, used for buttons and links */
+      --ruby: #9b1534;
+      /* Bright accent, used for hover states and the music bars */
+      --hot: #e84a7f;
+      /* Soft off-white */
+      --cream: #fff6f3;
+      /* Page background gradient (pink to lilac) */
+      --skyb: linear-gradient(180deg, #ffc2e2, #f7a6cf 50%, #d9b8ff);
+      /* Heading colour */
+      --h1: #9b1534;
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    /* Dark theme, applied automatically unless the user forced the light theme */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --skyb: linear-gradient(180deg, #5a1236, #8a1d52 50%, #4b2a7a);
+        --h1: #ffd6e4;
+        --ink: #ffd6e4;
+        color-scheme: dark;
+      }
+    }
+
+    /* Dark theme, applied when forced through the data-theme attribute */
+    :root[data-theme="dark"] {
+      --skyb: linear-gradient(180deg, #5a1236, #8a1d52 50%, #4b2a7a);
+      --h1: #ffd6e4;
+      --ink: #ffd6e4;
+      color-scheme: dark;
+    }
+
+    /* ---------- Base page styles ---------- */
+
+    /* Make every element size itself including padding and border */
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    /* Keep anchor jumps clear of the top safe area */
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    /* Full height column layout, centred, with the themed gradient background */
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: var(--skyb);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: "DM Sans", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 4px 14px;
+    }
+
+    
+
+
+    /* ---------- iMac frame and screen ---------- */
+
+    /* Fit the full monitor into the available viewport while preserving its aspect ratio */
+    .imac {
+      --w: min(100%, calc((100dvh - 16px) * 1.48), 1800px);
+      position: relative;
+      width: var(--w);
+      min-width: 0;
+    }
+
+    /* Soft ground shadow under the iMac */
+    .imac::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: -2%;
+      height: 9%;
+      background: radial-gradient(closest-side, rgba(74, 10, 28, 0.5), transparent);
+      filter: blur(10px);
+    }
+
+    /* iMac artwork, sits above the screen and lets clicks pass through */
+    .imac > img {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      pointer-events: none;
+      filter: drop-shadow(0 22px 22px rgba(74, 10, 28, 0.4));
+    }
+
+    /* Screen area, positioned to line up with the glass of the iMac artwork */
+    .scr {
+      position: absolute;
+      z-index: 1;
+      left: 29.3%;
+      top: 14%;
+      width: 40.9%;
+      height: 45.6%;
+      overflow: hidden;
+      border-radius: 2% / 3%;
+      background: #1565c0;
+    }
+
+    /* Full screen mode, the screen covers the whole browser window */
+    .scr.full {
+      position: fixed;
+      inset: 0;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100dvh;
+      border-radius: 0;
+      z-index: 200;
+    }
+
+    /* Small expand and collapse button in the screen corner */
+    .fs {
+      position: absolute;
+      z-index: 60;
+      right: 4px;
+      bottom: 4px;
+      width: 22px;
+      height: 22px;
+      border: 0;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+    /* Full screen button hover and keyboard focus state */
+    .fs:focus-visible,
+    .fs:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .fs:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* ---------- Virtual OS (design size 560x430, scaled by JavaScript) ---------- */
+
+    /* Blurred white cloud blobs drawn at the bottom of the desktop */
+    .cl {
+      position:fixed;
+      border-radius: 50%;
+      background: #fff;
+      filter: blur(14px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Fixed design canvas used by the OS scaling script */
+    .os {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 560px;
+      height: 430px;
+      transform-origin: top left;
+      cursor: var(--portfolio-cursor, url("./assets/cursor-small.png") 1 1, auto);
+    }
+
+    /* ---------- OS menu bar ---------- */
+
+    /* Top bar holding the name on the left and social icons on the right */
+    .bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      z-index: 5;
+    }
+
+    /* Menu bar title text */
+    .bar .t {
+      font-size: 13px;
+      white-space: nowrap;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Menu bar name, medium weight */
+    .bar .t b {
+      font-weight: 500;
+    }
+
+    /* Menu bar bullet separator */
+    .bar .t i {
+      font-style: normal;
+      margin: 0 8px;
+    }
+
+    /* Menu bar job title, slightly dimmed */
+    .bar .t span {
+      color: #eaf4ff;
+    }
+
+    /* Group of social icons in the menu bar */
+    .so {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Single rounded social icon in the menu bar */
+    .so a {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid;
+      place-items: center;
+      color: #fff;
+    }
+
+    /* Menu bar icon hover state */
+    .so a:hover {
+      background: rgba(255, 2, 116, 0.38);
+    }
+
+    .so a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Menu bar icon artwork */
+    .so svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ---------- Desktop icons ---------- */
+
+    /* Draggable desktop icon */
+    .ic {
+      position: absolute;
+      width: 96px;
+      text-align: center;
+      cursor: grab;
+      touch-action: none;
+      z-index: 2;
+      outline: none;
+    }
+
+    /* Icon while it is being dragged, lifted above the others */
+    .ic.d {
+      cursor: grabbing;
+      z-index: 40;
+    }
+
+    /* Visible focus ring for keyboard users */
+    .ic:focus-visible .th {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    /* Icon thumbnail box */
+    .th {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 5px;
+      position: relative;
+      border-radius: 14px;
+    }
+
+    /* Tilted translucent sheet behind the thumbnail, gives a stacked folder look */
+    .th::before {
+      content: "";
+      position: absolute;
+      inset: 4px -5px -4px 5px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.45);
+      transform: rotate(2deg);
+    }
+
+    /* Thumbnail face that holds an image or an emoji */
+    .th .f {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 5px 14px rgba(0, 0, 40, 0.28);
+    }
+
+    /* Thumbnail image fills the face */
+    .f img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Icon name label */
+    .nm {
+      font-weight: 700;
+      font-size: 10.5px;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Icon caption under the name */
+    .mt {
+      font-size: 9px;
+      color: #f0f6ff;
+      margin-top: 1px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Gradient presets for emoji thumbnails, pink */
+    .g1 {
+      background: linear-gradient(135deg, #9b1534, #e84a7f);
+    }
+
+    /* Gradient preset, slate */
+    .g2 {
+      background: linear-gradient(135deg, #1e293b, #475569);
+    }
+
+    /* Gradient preset, pink to lilac */
+    .g3 {
+      background: linear-gradient(135deg, #f6b2c6, #d9b8ff);
+    }
+
+    /* Gradient preset, green (currently unused) */
+    .g4 {
+      background: linear-gradient(135deg, #16a34a, #a3e635);
+    }
+
+    /* Gradient preset, amber */
+    .g5 {
+      background: linear-gradient(135deg, #f59e0b, #fde68a);
+    }
+
+    /* Centred emoji inside a thumbnail */
+    .f .em {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+    }
+
+    /* Paper sheet used as the resume icon */
+    .pdf {
+      width: 54px;
+      height: 60px;
+      margin: 0 auto 5px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 14px rgba(0, 0, 40, 0.25);
+      padding: 7px 5px;
+    }
+
+    /* Small red tag in the corner of the resume icon */
+    .pdf .tg {
+      width: 7px;
+      height: 8px;
+      border: 1.3px solid #d33;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+    /* Grey text line on the resume icon */
+    .pdf u {
+      display: block;
+      height: 1.5px;
+      background: #d9dde3;
+      margin-bottom: 4px;
+    }
+
+    /* ---------- Sticky notes ---------- */
+
+    /* Draggable sticky note */
+    .note {
+      position: absolute;
+      color: #1a1a1a;
+      padding: 13px 15px;
+      box-shadow: 0 5px 14px rgba(0, 0, 40, 0.25);
+      border-radius: 4px;
+      cursor: url("./assets/cursor-original.webp") 14 4, grab;
+      touch-action: none;
+      z-index: 2;
+    }
+
+    /* Sticky note title, Nothing You Could Do */
+    .note h2 {
+      margin: 0 0 6px;
+      font: 400 20px / 1.15 "Nothing You Could Do", cursive;
+    }
+
+    /* Sticky note body text, Poppins */
+    .note p {
+      margin: 0;
+      font: 400 11px / 1.45 "Poppins", system-ui, sans-serif;
+      opacity: 0.9;
+    }
+
+    .note p + p {
+      margin-top: 6px;
+    }
+
+    .note .note-hint {
+      margin-top: 7px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(26, 26, 26, 0.35);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    /* First note, yellow and tilted left */
+    .n1 {
+      left: 392px;
+      top: 70px;
+      width: 150px;
+      background: #fdee8f;
+      transform: rotate(-2deg);
+    }
+
+    /* Second note, white and tilted right */
+    .n2 {
+      left: 388px;
+      top: 204px;
+      width: 154px;
+      background: #f3f3f1;
+      transform: rotate(1.5deg);
+    }
+
+    /* ---------- Music player ---------- */
+
+    /* Player widget sits between the folders and sticky-note column */
+    .pl {
+      position: absolute;
+      left: 218px;
+      bottom: 8px;
+      width: 164px;
+      background: #2b2b2d;
+      color: #fff;
+      border-radius: 9px;
+      overflow: hidden;
+      z-index: 6;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Player header row with the title and minimise button */
+    .pl .h {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 10px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    /* Minimise button in the player header */
+    .pl .h button {
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 2px;
+    }
+
+    /* Player body that holds the track info, visualiser and controls */
+    .pl .b {
+      background: #161618;
+      padding: 9px 10px;
+    }
+
+    /* Current track title */
+    .pl .tt {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Track number label */
+    .pl .tn {
+      font-size: 9.5px;
+      color: #a9a9ad;
+      margin: 2px 0 6px;
+    }
+
+    /* Audio visualiser, a row of equaliser bars */
+    .br {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 22px;
+      margin-bottom: 8px;
+    }
+
+    /* Single equaliser bar, JavaScript changes its height */
+    .br i {
+      flex: 1;
+      background: #e84a7f;
+      border-radius: 1px;
+      height: 8%;
+    }
+
+    /* Row of transport buttons */
+    .ct {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Round transport button */
+    .ct button {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 0;
+      background: #3a3a3d;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* Larger white play and pause button */
+    .ct button.go {
+      background: #fff;
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Transport button artwork */
+    .ct svg {
+      width: 12px;
+      height: 12px;
+      fill: #fff;
+    }
+
+    /* Play and pause artwork is black on the white button */
+    .ct .go svg {
+      fill: #000;
+    }
+
+    /* Minimised player hides everything except the header */
+    .pl.m .b {
+      display: none;
+    }
+
+    /* ---------- Pop up windows ---------- */
+
+    /* Window shell, centred on the screen and hidden until opened */
+    .win {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(470px, 92%);
+      max-height: 330px;
+      transform: translate(-50%, -48%);
+      background: rgba(252, 250, 252, 0.97);
+      color: #2a1020;
+      border-radius: 10px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+      z-index: 50;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: text;
+    }
+
+    /* Open window state, added by JavaScript */
+    .win.o {
+      display: flex;
+    }
+
+    .download-scrim {
+      position: absolute;
+      inset: 0;
+      display: none;
+      background: rgba(12, 16, 45, 0.42);
+      z-index: 70;
+    }
+
+    .download-scrim.o {
+      display: block;
+    }
+
+    .download-notice {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(320px, calc(100% - 28px));
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 18px 20px;
+      transform: translate(-50%, -50%);
+      color: #2a1020;
+      background: #fffafd;
+      border: 1px solid #ecd3de;
+      border-radius: 12px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      z-index: 80;
+    }
+
+    .download-notice.o {
+      display: flex;
+    }
+
+    .download-notice h2 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .download-notice p {
+      margin: 5px 0 0;
+      font-size: 12px;
+    }
+
+    .download-notice .btn {
+      margin-top: 12px;
+    }
+
+    /* Window title bar */
+    .wh {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      background: #efe6ec;
+      font-weight: 700;
+      font-size: 12px;
+      flex: none;
+    }
+
+    /* Red close dot in the title bar */
+    .wh button {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 0;
+      background: #ff5f57;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* Close dot keyboard focus ring */
+    .wh button:focus-visible {
+      outline: 2px solid #1976d2;
+    }
+
+    /* Scrollable window content area */
+    .wc {
+      padding: 14px;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    /* Window content heading */
+    .wc h3 {
+      margin: 0;
+      font: 700 14px / 1.25 "DM Sans", sans-serif;
+    }
+
+    /* Window content subheading */
+    .wc h4 {
+      margin: 2px 0 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #7a4a5c;
+    }
+
+    /* Bullet list inside a window */
+    .wc ul {
+      margin: 6px 0 0;
+      padding-left: 16px;
+    }
+
+    /* Bullet list item spacing */
+    .wc li {
+      margin-bottom: 4px;
+    }
+
+    /* ---------- Window content components ---------- */
+
+    /* White content card */
+    .card {
+      border: 1px solid #ecd3de;
+      border-radius: 8px;
+      padding: 11px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    /* No extra gap under the final card */
+    .card:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Call to action button */
+    .btn {
+      display: inline-block;
+      background: #9b1534;
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font: 700 12px "DM Sans", sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* Call to action hover and keyboard focus state */
+    .btn:hover,
+    .btn:focus-visible {
+      background: #e84a7f;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid #1976d2;
+      outline-offset: 2px;
+    }
+
+    /* ---------- Contact form ---------- */
+
+    /* Form field label */
+    form label {
+      display: block;
+      font-weight: 700;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    /* Text input and message box */
+    form input,
+    form textarea {
+      display: block;
+      width: 100%;
+      margin-top: 3px;
+      padding: 7px 9px;
+      border: 1px solid #d9b8c7;
+      border-radius: 7px;
+      font: inherit;
+    }
+
+    /* Message box minimum height, resizable vertically only */
+    form textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    /* ---------- Accessibility ---------- */
+
+    /* Frosted macOS-style dock, built from the portfolio's supplied pixel icons. */
+    .mac-dock {
+      position: absolute;
+      z-index: 26;
+      left: 0;
+      right: 0;
+      bottom: 7px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      transform: translateX(8px);
+    }
+
+    .dock-shelf {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      max-width: calc(100% - 20px);
+      padding: 5px 8px 6px;
+      border: 1px solid rgba(255, 255, 255, .34);
+      border-radius: 14px;
+      background: rgba(28, 22, 34, .36);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 5px 18px rgba(0, 0, 0, .26);
+      -webkit-backdrop-filter: blur(12px) saturate(1.35);
+      backdrop-filter: blur(12px) saturate(1.35);
+      pointer-events: auto;
+    }
+
+    .dock-item {
+      position: relative;
+      display: grid;
+      flex: 0 1 32px;
+      place-items: center;
+      width: 32px;
+      height: 42px;
+      border: 0;
+      border-radius: 8px;
+      padding: 0;
+      background: transparent;
+      transform-origin: center bottom;
+      transition: transform .16s cubic-bezier(.2, .8, .2, 1), filter .16s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .dock-item img {
+      display: block;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .28));
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .dock-item:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, .9);
+      outline-offset: 2px;
+    }
+
+    .dock-tooltip {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      z-index: 2;
+      padding: 4px 8px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 6px;
+      background: rgba(35, 25, 39, .78);
+      color: #fff;
+      font: 600 9px/1.2 "DM Sans", system-ui, sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 4px);
+      transition: opacity .12s ease, transform .12s ease, visibility .12s;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .dock-item:hover .dock-tooltip,
+    .dock-item:focus-visible .dock-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .dock-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 4px rgba(255, 255, 255, .75);
+      opacity: 0;
+      transform: translateX(-50%);
+      transition: opacity .15s ease;
+      pointer-events: none;
+    }
+
+    .dock-item.is-open .dock-indicator {
+      opacity: 1;
+    }
+
+    /* Keep only the icon names; remove the secondary desktop shortcut captions. */
+    .ic .mt {
+      display: none !important;
+    }
+
+    /* Keep fullscreen shortcuts legible while preserving their aspect ratio. */
+    .scr.full .ic .th {
+      width: 44px;
+      height: 44px;
+    }
+
+    .scr.full .ic .nm {
+      font-size: 10.5px;
+      line-height: 1.2;
+    }
+
+    .dock-divider {
+      align-self: stretch;
+      flex: 0 0 1px;
+      width: 1px;
+      margin: 2px 3px 4px;
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .dock-item.bouncing img {
+      animation: dock-bounce .42s cubic-bezier(.28, .84, .42, 1);
+    }
+
+    @keyframes dock-bounce {
+      0%, 100% { transform: translateY(0); }
+      38% { transform: translateY(-13px); }
+      66% { transform: translateY(1px); }
+    }
+
+    @media (max-width: 420px) {
+      .dock-shelf { gap: 2px; padding-inline: 5px; }
+      .dock-item { flex-basis: 30px; width: 30px; }
+      .dock-item img { width: 26px; height: 26px; }
+    }
+
+    @media (max-width: 1024px) {
+      .fs {
+        right: max(10px, env(safe-area-inset-right));
+        bottom: max(10px, env(safe-area-inset-bottom));
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+      }
+    }
+  
+    :root {
+      --ink: #4a0a1c;
+      --ruby: #9b1534;
+      --hot: #e84a7f;
+      --blush: #fbd5e0;
+      --cream: #fff6f3;
+      --gel: linear-gradient(#ff9ec0, #e84a7f 48%, #c92a62 52%, #e8598c);
+      --body: "DM Sans", system-ui, sans-serif;
+    }
+    body {
+      background-color: #e9a7c5;
+      background-image: url("./assets/pink-sky.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    .ic { transition: transform .18s ease, filter .18s ease; }
+    .ic:hover { transform: translateY(-3px); }
+    .ic:active { transform: translateY(1px); }
+    .ic .th {
+      border: 1px solid #9b1534;
+      background: linear-gradient(145deg, #fff, #fbd5e8 48%, #ef8db5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 5px 0 -2px #c9569a,
+        0 10px 17px rgba(74,10,28,.35);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .ic .th::before {
+      inset: 4px -4px -4px 4px;
+      border: 1px solid rgba(255,255,255,.9);
+      background: linear-gradient(145deg, rgba(255,255,255,.6), rgba(239,141,181,.6));
+    }
+    .ic .th .f {
+      inset: 3px;
+      border: 1px solid rgba(255,255,255,.95);
+      border-radius: 11px;
+      background: linear-gradient(145deg, #fff, #fff0f5);
+      box-shadow: inset 0 1px 0 #fff, 0 2px 6px rgba(74,10,28,.22);
+    }
+    .ic:hover .th {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 5px 0 -2px #c9569a,
+        0 14px 21px rgba(74,10,28,.4);
+    }
+    .ic:focus-visible .th { outline: 3px solid #fff; outline-offset: 5px; }
+    .nm { font-family: var(--body); font-weight: 700; }
+    .mt { color: #fff6fb; font-weight: 700; }
+    .pdf {
+      border: 1px solid #9b1534;
+      background: linear-gradient(145deg, #fff, #ffe6ef);
+      box-shadow: inset 0 1px 0 #fff, 0 5px 0 -2px #c9569a,
+        0 10px 17px rgba(74,10,28,.35);
+    }
+    .note .note-hint { font-family: "Poppins", system-ui, sans-serif; }
+    .win {
+      border: 1px solid rgba(74,10,28,.65);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffaf7, #ffe9f0);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.75),
+        0 24px 50px rgba(30,0,12,.42);
+    }
+    .wh {
+      color: var(--ink);
+      border-bottom: 1px solid rgba(74,10,28,.45);
+      background: repeating-linear-gradient(0deg, #ffe2eb 0 2px, #fff6f9 2px 4px);
+    }
+    .wh button[data-x] {
+      width: 18px;
+      height: 18px;
+      border: 1px solid #8a1230;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 25%, #ffd0de, #e8457a 60%, #9b1534);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .card {
+      border: 1px solid rgba(74,10,28,.22);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fff, #fff6f3);
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+
+/* Round chrome transport button */
+.mb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #7b8088;
+  background: radial-gradient(circle at 35% 22%, #fff, #e1e4e9 55%, #a9adb4);
+  box-shadow: inset 0 -3px 6px rgba(80, 86, 96, 0.35), 0 3px 6px rgba(74, 10, 28, 0.3);
+  color: #4a0a1c;
+}
+
+/* Transport icon sizing */
+.mb svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Larger pink play/pause button */
+.mb.go {
+  width: 48px;
+  height: 48px;
+  border-color: #8a1230;
+  background: var(--gel);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 4px 10px rgba(154, 21, 52, 0.45);
+}
+
+/* Larger icon for the play/pause button */
+.mb.go svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover and press feedback for transport buttons */
+.mb:hover {
+  filter: brightness(1.07);
+}
+
+.mb:active {
+  transform: translateY(1px);
+}
+    @media (max-width: 1024px) {
+    }
+    
+    /* Supplied font and switchable visual assets are loaded from ASSET_PATHS in JavaScript */
+    .ic.pixel-icon .th,
+    .ic.pixel-icon .th .f {
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .ic.pixel-icon .th::before {
+      display: none !important;
+    }
+
+    .ic.pixel-icon .th .f {
+      overflow: visible;
+    }
+
+    .ic.pixel-icon .th .f img {
+      object-fit: contain;
+      image-rendering: pixelated;
+      background: transparent;
+    }
+
+    .window-title-icon,
+    .player-title-icon,
+    .player-sound-icon {
+      display: inline-block;
+      flex: 0 0 auto;
+      object-fit: contain;
+      image-rendering: pixelated;
+      vertical-align: middle;
+    }
+
+    .window-title-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 7px;
+    }
+
+    :root {
+      --handwriting-font: "Nothing You Could Do";
+      --pink-sky-image: linear-gradient(180deg, #f7b5d3, #f4a9c3 55%, #dcc4ff);
+      --desktop-wallpaper: linear-gradient(180deg, #70b7e8 0%, #78b04e 100%);
+      --portfolio-cursor: url("./assets/cursor-small.png") 1 1, auto;
+    }
+
+    /* Keep the iMac large while fitting its full frame inside the viewport */
+    .imac {
+      --w: min(100%, calc((100dvh - 8px) * 1.48), 2400px);
+    }
+
+    /* Use the supplied desktop wallpaper in both normal and expanded views. */
+    .scr {
+      background: var(--desktop-wallpaper) center / cover no-repeat;
+    }
+
+    .scr.full {
+      position: fixed;
+      inset: 0;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100dvh;
+      border-radius: 0;
+      overflow: hidden;
+      z-index: 200;
+      background: var(--desktop-wallpaper) center / cover no-repeat;
+    }
+
+    .os {
+      background: var(--desktop-wallpaper) center / cover no-repeat !important;
+    }
+
+    .scr.full .os {
+      background: var(--desktop-wallpaper) center / cover no-repeat !important;
+    }
+
+    /* Keep the expand control on the bezel, outside the desktop area. */
+    .fs {
+      left: calc(29.3% - 31px);
+      top: calc(14% + 12px);
+      right: auto;
+      bottom: auto;
+      z-index: 260;
+    }
+
+    .fs.is-full {
+      position: fixed;
+      inset: 14px 14px auto auto;
+      z-index: 260;
+    }
+
+    body.screen-expanded {
+      overflow: hidden;
+      padding: 0;
+      min-height: 100dvh;
+    }
+
+    .mb {
+      width: 28px;
+      height: 28px;
+    }
+
+    .mb.go {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* All pointer states keep the same small supplied cursor */
+    html body,
+    html body * {
+      cursor: var(--portfolio-cursor, auto) !important;
+    }
+
+    .wh {
+      position: relative;
+      justify-content: flex-start;
+      padding-right: 42px;
+    }
+
+    .wh button[data-x] {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      flex: none;
+      margin-left: 0;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      color: #fff;
+      font: 700 16px/1 "DM Sans", sans-serif;
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+      cursor: pointer;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .wh button[data-x]::before {
+      content: "×";
+    }
+
+    /* A small press animation and an on-screen click pulse */
+    .clicking {
+      animation: click-pop .16s ease-out;
+    }
+
+    .scr.click-pulse {
+      animation: screen-click .16s ease-out;
+    }
+
+    @keyframes click-pop {
+      0%, 100% { transform: scale(1); }
+      45% { transform: scale(.94); }
+    }
+
+    @keyframes screen-click {
+      50% { box-shadow: inset 0 0 0 2px rgba(255, 132, 191, .72); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clicking,
+      .scr.click-pulse {
+        animation: none;
+      }
+      .dock-item,
+      .dock-tooltip,
+      .dock-indicator {
+        transition-duration: .01ms !important;
+      }
+      .dock-item.bouncing img {
+        animation: none !important;
+      }
+    }
+
+    /* ---------- Projects, Skills and Experience layouts ---------- */
+
+    #w-projects,
+    #w-skills {
+      width: min(530px, 95%);
+    }
+
+    #w-experience,
+    #w-education {
+      width: min(500px, 94%);
+    }
+
+    .sk-mark {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: var(--ruby);
+      color: #fff;
+      font: 700 11px/1 "DM Sans", system-ui, sans-serif;
+      letter-spacing: .02em;
+    }
+
+    .sk-name {
+      font-size: 9.5px;
+      line-height: 1.2;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+
+    /* ================= Latest updates ================= */
+
+    /* ---------- First-load layout: notes sit up beside the icons, clear of the player ---------- */
+    .n1 { left: 252px; top: 46px; }
+    .n2 { left: 392px; top: 84px; }
+
+    /* ---------- Movable, stackable windows ---------- */
+
+    /* JavaScript positions each window with left/top, so the old centring transform is gone */
+    .win {
+      left: 0;
+      top: 0;
+      transform: none;
+      z-index: 1000;
+      transition: opacity .14s ease, scale .14s ease;
+    }
+
+    .win.o { animation: win-in .16s ease-out; }
+    .win.closing { opacity: 0; scale: .96; pointer-events: none; }
+
+    @keyframes win-in {
+      from { opacity: 0; scale: .96; }
+      to { opacity: 1; scale: 1; }
+    }
+
+    /* The title bar is the drag handle */
+    .wh {
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .win.dragging { box-shadow: inset 0 0 0 2px rgba(255,255,255,.75), 0 34px 60px rgba(30,0,12,.5); }
+    .win.dragging .wh { cursor: grabbing; }
+
+    /* Dock and download notice stay above every window */
+    .mac-dock { z-index: 5000; }
+    .download-scrim { z-index: 6000; }
+    .download-notice { z-index: 6001; }
+
+    /* ---------- Button press animation ---------- */
+
+    /* The individual scale property is used so it never fights existing transforms */
+    @keyframes click-pop {
+      0% { scale: .86; }
+      55% { scale: 1.05; }
+      100% { scale: 1; }
+    }
+
+    @keyframes click-pop-soft {
+      0%, 100% { scale: 1; }
+      45% { scale: .97; }
+    }
+
+    .clicking { animation: click-pop .22s ease-out; }
+    .clicking-soft { animation: click-pop-soft .16s ease-out; }
+
+    /* Held-down state, so the press is visible before the pointer is released */
+    button:active,
+    .btn:active,
+    .so a:active,
+    .dock-item:active,
+    .proj-visit:active,
+    .proj-thumb:active { scale: .9; }
+
+    .ic:active .th { scale: .9; }
+    .wh button[data-x]:active { scale: .78; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clicking, .clicking-soft, .win.o { animation: none; }
+      .win { transition: none; }
+    }
+
+    /* ---------- Projects window with room for the two-column grid and curved scrolling ---------- */
+    #w-projects {
+      width: min(548px, 98%);
+      max-height: min(390px, 90%);
+    }
+
+
+    /* ---------- About me: centred card layout ---------- */
+    #w-about {
+      width: min(520px, 96%);
+      max-height: none;
+    }
+
+    #w-about .wc { padding: 10px 14px 12px; }
+
+    /* ================= Round 3: legibility, about font, contact, skills, scrollbars ================= */
+
+    /* Windows and the player stay light, so their text must stay dark even when the device is in dark mode */
+    .os {
+      --ink: #4a0a1c;
+      --h1: #9b1534;
+      color-scheme: light;
+    }
+
+    /* ---------- Skills ---------- */
+    .sk-logo {
+      display: block;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    /* ---------- Contact ---------- */
+    #w-contact {
+      width: min(500px, 95%);
+      max-height: min(365px, 90%);
+    }
+
+    #w-contact .wc {
+      padding: 12px;
+      background: linear-gradient(180deg, #fff, #fff6f3);
+    }
+
+    /* ---------- Curved scrollbars (SVG track and thumb that follow the window's rounded corner) ---------- */
+    .scroll-container {
+      --thumb-color: #e84a7f;
+      --thumb-color-active: #9b1534;
+      --thumb-width: 4;
+      --thumb-width-active: 6;
+      --track-color: transparent;
+      --track-color-active: rgba(155, 21, 52, .14);
+      --track-width: 4;
+      --track-width-active: 6;
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 auto;
+      min-height: 0;
+      overflow: hidden;
+      /* matches the window's inner bottom corners (18px radius minus the 1px border) */
+      border-radius: 0 0 17px 17px;
+    }
+
+    .wc.scroll-content {
+      flex: 0 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .wc.scroll-content::-webkit-scrollbar { display: none; }
+
+    .scrollbar-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .scrollbar-svg:has(:active) {
+      --thumb-width: var(--thumb-width-active);
+      --track-width: var(--track-width-active);
+      --track-color: var(--track-color-active);
+    }
+
+    .scrollbar-track {
+      fill: none;
+      stroke: var(--track-color);
+      stroke-width: var(--track-width);
+      stroke-linecap: round;
+      transition: stroke-width 150ms ease-in-out, stroke 150ms ease-in-out;
+    }
+    .scrollbar-thumb {
+      fill: none;
+      stroke: var(--thumb-color);
+      stroke-width: var(--thumb-width);
+      stroke-linecap: round;
+      pointer-events: auto;
+      touch-action: none;
+      transition: stroke-width 150ms ease-in-out, stroke 150ms ease-in-out;
+    }
+    .scrollbar-thumb:active { stroke: var(--thumb-color-active); }
+
+    /* Any leftover native scrollbar (the message box) uses the same palette */
+    textarea { scrollbar-width: thin; scrollbar-color: #e84a7f transparent; }
+
+  
+
+/* Standalone feature pages */
+.feature-host { display:flex; flex:0 1 auto; min-height:0; padding:0; overflow:visible; }
+.feature-frame { display:block; flex:none; width:100%; height:150px; min-height:0; border:0; background:transparent; }
+.music-frame { display:block; width:180px; height:35px; border:0; border-radius:0; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
+
+/* The embedded player page is positioned on the virtual desktop. */
+.music-frame { position:absolute; z-index:18; left:368px; top:228px; width:180px; height:35px; display:block; border:0; border-radius:0; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
+.music-frame.drag { opacity:.92; }

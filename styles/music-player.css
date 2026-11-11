@@ -1,0 +1,262 @@
+
+    /* Floating brushed-silver player; JS positions it via left/top */
+.mp {
+  position: absolute;
+  z-index: 40;
+  left: 368px;
+  top: 228px;
+  width: 180px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fdfdff, #e8eaef 45%, #cdd1d8);
+  border: 1px solid rgba(74, 10, 28, 0.55);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85), 0 20px 34px -8px rgba(74, 10, 28, 0.55);
+  transition: box-shadow 0.2s;
+}
+
+/* Deeper shadow while the player is being dragged */
+.mp.drag {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85), 0 34px 46px -8px rgba(74, 10, 28, 0.65);
+}
+
+/* Drag handle bar; touch-action none lets pointer events drive dragging on touch devices */
+.mph {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(74, 10, 28, 0.45);
+  background: repeating-linear-gradient(0deg, #ffe2eb 0 2px, #fff6f9 2px 4px);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Handle title text */
+.mph b {
+  flex: 1;
+  text-align: center;
+  font: 700 0.8rem var(--body);
+  color: var(--ink);
+  padding-right: 22px;
+}
+
+/* Round minimise button */
+.mx {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #9a6a10;
+  background: radial-gradient(circle at 35% 25%, #fff3c4, #ffc2d6 60%, #e8457a);
+  padding: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Player body padding */
+.mpb {
+  padding: 12px;
+}
+
+/* Hide the body when the player is minimised */
+.mp.min .mpb {
+  display: none;
+}
+
+/* Dark LCD panel housing title, track index and spectrum */
+.mpd {
+  background: #2a0610;
+  border-radius: 12px;
+  padding: 8px 10px 10px;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.7), 0 1px 0 #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scanlines and glare over the LCD panel */
+.mpd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+    linear-gradient(125deg, rgba(255, 255, 255, 0.13), transparent 30%);
+}
+
+/* Track title, truncated with an ellipsis when too long */
+.mpt {
+  font: 1.35rem / 1 "VT323", monospace;
+  color: #ffb3cb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Track number readout */
+.mpn {
+  font: 1.05rem / 1.2 "VT323", monospace;
+  color: #c9506f;
+}
+
+/* Spectrum analyser container (bars are injected by JS) */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 34px;
+  margin-top: 6px;
+}
+
+/* Individual spectrum bar; height is driven by audio analysis */
+.bars i {
+  flex: 1;
+  height: 8%;
+  border-radius: 2px;
+  background: linear-gradient(#ffd0de, #e84a7f);
+  transition: height 0.08s;
+}
+
+/* Transport button row */
+.mpc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Volume row: label plus slider */
+.vol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font: 700 0.75rem var(--body);
+  color: var(--ink);
+}
+
+/* Custom slider track (appearance reset so we can style it) */
+.vol input {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 6px;
+  background: linear-gradient(#b9bdc4, #e8eaee);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+  border: 0;
+  padding: 0;
+}
+
+/* Chrome slider thumb (WebKit/Blink) */
+.vol input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #fff, #cfd3d9 60%, #8f949c);
+  border: 1px solid #6b7078;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Chrome slider thumb (Firefox) */
+.vol input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #fff, #cfd3d9 60%, #8f949c);
+  border: 1px solid #6b7078;
+}
+    @media (max-width: 1024px) {
+      .mp { width: min(220px, calc(100vw - 16px)); }}
+    .mp { z-index: 18; }
+    .mp button, .mp input { cursor: pointer; }
+
+    .player-title-icon {
+      width: 22px;
+      height: 22px;
+      margin-right: 7px;
+    }
+
+    .player-sound-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
+    /* The music player now lives inside the virtual screen */
+    .mp {
+      position: absolute;
+      z-index: 18;
+      left: 368px;
+      top: 228px;
+      width: 180px;
+      border-radius: 14px;
+    }
+
+    .mph {
+      height: 27px;
+      padding: 0 8px;
+      gap: 7px;
+    }
+
+    .mph b {
+      font-size: 0.72rem;
+    }
+
+    .mpb {
+      padding: 8px;
+    }
+
+    .mpd {
+      padding: 6px 8px 8px;
+    }
+
+    .bars {
+      height: 22px;
+      margin-top: 4px;
+    }
+
+    .mpc {
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .vol {
+      margin-top: 8px;
+      font-size: 0.68rem;
+    }
+
+    .mp button,
+    .mp input {
+      cursor: inherit;
+    }
+
+    /* ---------- Music player: volume row stays inside the player ---------- */
+    .vol { min-width: 0; }
+    .vol .player-sound-icon { flex: none; }
+    .vol input { flex: 1 1 0; width: 100%; min-width: 0; margin: 0; }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body.music-page {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.music-page .mp {
+  position: relative;
+  inset: auto;
+  width: 180px;
+  max-width: none;
+  margin: 0;
+  z-index: auto;
+}

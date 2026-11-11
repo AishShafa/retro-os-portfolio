@@ -1,0 +1,86 @@
+
+
+    /* About window layout, portrait beside the text */
+    .abt {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    /* About window portrait */
+    .abt img {
+      width: 130px;
+      border-radius: 8px;
+      flex: none;
+    }
+
+    .abt p {
+      font: 400 14px / 1.45 "Segoe Print", "Comic Neue", sans-serif;
+    }
+    .abt p {
+      font-weight: 700 !important;
+      text-shadow: 0 .2px currentColor;
+    }
+
+    /* Use the supplied font for the About text */
+    .abt p {
+      font-family: var(--handwriting-font), "Segoe Print", sans-serif !important;
+    }
+
+    .abt {
+      position: relative;
+      display: block;
+      margin-top: 34px;
+      padding: 40px 22px 12px;
+      text-align: center;
+      border: 1px solid rgba(74, 10, 28, .5);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fff, #fff6f3);
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+
+    /* Portrait badge straddling the top edge of the card */
+    .abt-badge {
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      width: 72px;
+      height: 72px;
+      padding: 3px;
+      transform: translateX(-50%);
+      border: 1.5px solid var(--ruby);
+      border-radius: 9px;
+      background: #fff6f3;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .9), 0 6px 12px rgba(74, 10, 28, .28);
+    }
+
+    .abt .abt-badge img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+
+    .abt h3 { font-size: 21px; letter-spacing: -.01em; color: var(--ink); }
+    .abt h4 { margin: 2px 0 10px; font-size: 11.5px; font-weight: 700; color: var(--ink); }
+    .abt p { margin: 0 0 8px; font-size: 13px; line-height: 1.35; }
+    .abt .btn { margin-top: 4px; }
+
+    /* ---------- About me: same fonts as the sticky notes, regular weight ---------- */
+    .abt h3 {
+      font: 400 28px/1.1 "Nothing You Could Do", cursive;
+      letter-spacing: 0;
+    }
+    .abt h4 {
+      font: 400 11.5px/1.4 "Poppins", system-ui, sans-serif;
+    }
+    .abt p {
+      font-family: "Poppins", system-ui, sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 12px;
+      line-height: 1.5;
+      text-shadow: none !important;
+    }
+.feature-about .abt { max-width:100%; margin-inline:auto; }

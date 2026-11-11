@@ -1,0 +1,90 @@
+
+
+    /* Projects: two-up grid, thumbnail on top, then title and link */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .proj {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 8px;
+      border: 1px solid rgba(74, 10, 28, .22);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff, #fff6f3);
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+
+    .proj-thumb {
+      display: block;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      background: #fbd5e0;
+    }
+
+    .proj-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .proj-kind {
+      margin: 9px 0 2px;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #7a4a5c;
+    }
+
+    .proj h3 {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .proj-title {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .proj-title:hover,
+    .proj-title:focus-visible {
+      color: var(--ruby);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .proj .proj-tag {
+      margin: 1px 0 5px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #7a4a5c;
+    }
+
+    .proj-desc {
+      margin: 0 0 8px;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .proj-title:focus-visible,
+    .proj-thumb:focus-visible {
+      outline: 2px solid #1976d2;
+      outline-offset: 2px;
+    }
+
+    /* ---------- Projects: spacing now that the kind labels are gone ---------- */
+    .proj h3 { margin: 9px 0 0; }
+    .proj h3 + .proj-desc { margin-top: 5px; }
+.feature-projects .proj-grid { width:100%; }
+@media (max-width: 430px) { .feature-projects .proj-grid { grid-template-columns:1fr; } }

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aishath Shafa</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles/music-player.css">
+</head>
+<body class="music-page">
+  <div class="mp" id="mp" role="region" aria-label="Music player">
+
+    <!-- Drag handle with the minimise button and title -->
+    <div class="mph" id="mph" tabindex="0" aria-label="Music player. Drag to move, or use the arrow keys.">
+      <button class="mx" id="mmin" aria-label="Expand player" aria-expanded="false"></button>
+      <b>Now playing</b>
+    </div>
+
+    <!-- Player body: display, transport controls and volume -->
+    <div class="mpb">
+
+      <!-- Retro LCD display showing track title, index and spectrum bars -->
+      <div class="mpd">
+        <div class="mpt" id="mpt">Strawberry Dial-Up</div>
+        <div class="mpn" id="mpn">Track 1 / 3</div>
+        <div class="bars" id="bars" aria-hidden="true"></div>
+      </div>
+
+      <!-- Transport controls: previous, play/pause, next -->
+      <div class="mpc">
+        <button class="mb" id="mprev" aria-label="Previous track">
+          <svg viewBox="0 0 20 20"><path d="M4 4h2.5v12H4zM17 4v12L7.5 10z"/></svg>
+        </button>
+        <button class="mb go" id="mplay" aria-label="Play">
+          <svg viewBox="0 0 20 20"><path d="M5 3l12 7-12 7z"/></svg>
+        </button>
+        <button class="mb" id="mnext" aria-label="Next track">
+          <svg viewBox="0 0 20 20"><path d="M13.5 4H16v12h-2.5zM3 4v12l9.5-6z"/></svg>
+        </button>
+      </div>
+
+      <!-- Volume slider (0–100) -->
+      <label class="vol">Vol
+        <input type="range" id="mvol" min="0" max="100" value="60" aria-label="Volume">
+      </label>
+    </div>
+  </div>
+  <script src="./scripts/music-player.js" defer></script>
+</body>
+</html>

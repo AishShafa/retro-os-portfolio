@@ -1,0 +1,102 @@
+
+
+    /* Experience and education: title and date on one row, organisation below */
+    .job {
+      padding: 12px 0;
+      border-top: 1px solid rgba(74, 10, 28, .2);
+    }
+
+    .job:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .job-head h3 {
+      font-size: 14px;
+    }
+
+    .job-date {
+      flex: none;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .job-org {
+      margin: 1px 0 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ruby);
+    }
+
+    .job-desc {
+      margin: 0 0 5px;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .job-desc:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- Education link ---------- */
+    .edu-link {
+      display: inline-grid;
+      color: var(--ruby);
+      text-decoration: underline dotted;
+      text-underline-offset: 3px;
+    }
+    .edu-label, .edu-more { grid-area: 1 / 1; }
+    .edu-more { visibility: hidden; font-weight: 700; color: var(--ruby); }
+    .edu-link:hover .edu-label,
+    .edu-link:focus-visible .edu-label { visibility: hidden; }
+    .edu-link:hover .edu-more,
+    .edu-link:focus-visible .edu-more { visibility: visible; }
+    .edu-link:hover { text-decoration-style: solid; }
+    .edu-link:focus-visible { outline: 2px solid #1976d2; outline-offset: 2px; }
+html,
+body {
+  margin: 0;
+}
+
+body.feature-page {
+  display: block;
+  min-height: 100dvh;
+  padding: 8px 4px 14px;
+  color: #2a1020;
+  font-size: 12px;
+  overflow: auto;
+}
+
+.feature-content {
+  width: min(548px, calc(100vw - 16px));
+  min-height: 0;
+  margin: 0 auto;
+  padding: 14px;
+  overflow: visible;
+  background: rgba(252, 250, 252, 0.97);
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.feature-page.feature-embedded {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.feature-embedded .feature-content {
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
