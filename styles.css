@@ -66,8 +66,9 @@
       font-family: "DM Sans", system-ui, sans-serif;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 8px 4px 14px;
+      padding: 8px 4px;
     }
 
     

@@ -37,7 +37,7 @@
 .mph b {
   flex: 1;
   text-align: center;
-  font: 700 0.8rem var(--body);
+  font: 300 0.2rem var(--body);
   color: var(--ink);
   padding-right: 22px;
 }
@@ -86,7 +86,7 @@
 
 /* Track title, truncated with an ellipsis when too long */
 .mpt {
-  font: 1.35rem / 1 "VT323", monospace;
+  font: 0.75rem / 1 "VT323", monospace;
   color: #ffb3cb;
   white-space: nowrap;
   overflow: hidden;
@@ -95,7 +95,7 @@
 
 /* Track number readout */
 .mpn {
-  font: 1.05rem / 1.2 "VT323", monospace;
+  font: 0.85rem / 1.2 "VT323", monospace;
   color: #c9506f;
 }
 
@@ -202,7 +202,7 @@
     }
 
     .mph b {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
     }
 
     .mpb {

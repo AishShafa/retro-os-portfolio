@@ -4,6 +4,7 @@
   var content = document.querySelector('.feature-content');
   var isEmbedded = new URLSearchParams(window.location.search).get('embed') === '1';
 
+  document.documentElement.classList.toggle('feature-embedded', isEmbedded);
   document.body.classList.toggle('feature-embedded', isEmbedded);
   if (!isEmbedded || !window.parent || window.parent === window) return;
 

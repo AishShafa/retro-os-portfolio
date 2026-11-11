@@ -66,6 +66,12 @@ body {
   margin: 0;
 }
 
+html.feature-embedded:not([data-theme="light"]) {
+  --ink: #4a0a1c;
+  --h1: #9b1534;
+  color-scheme: light;
+}
+
 body.feature-page {
   display: block;
   min-height: 100dvh;
