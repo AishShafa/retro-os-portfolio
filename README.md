@@ -43,10 +43,5 @@ This is a a retro inspired portfolio website designed as a desktop operating sys
 ## Notes
 
 This is a front-end portfolio site with no build pipeline or dependency installation required. It is designed to be simple to deploy to GitHub Pages.
-
-
-Aishath Shafa
-
-GitHub: https://github.com/AishShafa
-LinkedIn: https://www.linkedin.com/in/aishathshafa/
+in.com/in/aishathshafa/
 Email: aishathshafaofficial@gmail.com
