@@ -4,12 +4,14 @@ A retro-inspired portfolio website designed as a desktop operating system interf
 
 Retro OS Portfolio is a single-page personal portfolio experience built with HTML, CSS, and JavaScript. The interface mimics a desktop environment, where visitors can click icons to open windows showing different sections of the portfolio. It combines nostalgic visual design with modern portfolio storytelling.
 
+You can view the live project here: https://github.com/AishShafa/retro-os-portfolio
+
 ## Features
 
 - Desktop-style portfolio navigation
 - Interactive window-based layout
-- Sections for projects, experience, education, skills, and contact details
-- Downloadable CV / résumé shortcut
+- Sections which look like folders for projects, experience, education, skills, and contact details
+- Downloadable CV folder
 - Embedded music player and retro visual effects
 - Responsive layout for desktop and smaller screens
 - Static front-end implementation with no framework or build step required
@@ -125,5 +127,3 @@ retro-os-portfolio/
 ## Notes
 
 This project is a static front-end portfolio and does not require a build pipeline or dependency installation so that it can be deployed on Github pages which hosts only static websites.
-www.linkedin.com/in/aishathshafa/
-Email: aishathshafaofficial@gmail.com
