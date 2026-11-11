@@ -19,13 +19,14 @@
             <div class="contact-grid">
               <form id="f" class="contact-form">
                 <div class="contact-fields">
-                  <label>Your name<input name="n" placeholder="Your Name" required autocomplete="name"></label>
-                  <label>Email<input name="e" type="email" placeholder="your@email.com" required autocomplete="email"></label>
+                  <label>Your name<input name="name" placeholder="Your Name" required autocomplete="name"></label>
+                  <label>Email<input name="email" type="email" placeholder="your@email.com" required autocomplete="email"></label>
                   <label class="contact-wide">Company<input name="company" placeholder="Optional" autocomplete="organization"></label>
                   <label class="contact-wide">What do you need?<input name="need" placeholder="Optional"></label>
-                  <label class="contact-wide">Tell me about the project<textarea name="m" rows="3" placeholder="What are you making, who is it for, and when does it need to be ready?" required></textarea></label>
+                  <label class="contact-wide">Tell me about the project<textarea name="message" rows="3" placeholder="What are you making, who is it for, and when does it need to be ready?" required></textarea></label>
                 </div>
-                <button class="btn" type="submit"><span>Send message</span><span aria-hidden="true">↗</span></button>
+                <button class="btn" type="submit">Send message</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
               </form>
             </div>
           

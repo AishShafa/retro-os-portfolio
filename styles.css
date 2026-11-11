@@ -1456,8 +1456,8 @@
 /* Standalone feature pages */
 .feature-host { display:flex; flex:0 1 auto; min-height:0; padding:0; overflow:visible; }
 .feature-frame { display:block; flex:none; width:100%; height:150px; min-height:0; border:0; background:transparent; }
-.music-frame { display:block; width:180px; height:35px; border:0; border-radius:0; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
+.music-frame { display:block; width:180px; height:35px; border:0; border-radius:14px; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
 
 /* The embedded player page is positioned on the virtual desktop. */
-.music-frame { position:absolute; z-index:18; left:368px; top:228px; width:180px; height:35px; display:block; border:0; border-radius:0; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
+.music-frame { position:absolute; z-index:18; left:368px; top:228px; width:180px; height:35px; display:block; border:0; border-radius:14px; background:transparent; box-shadow:none; padding:0; overflow:hidden; }
 .music-frame.drag { opacity:.92; }

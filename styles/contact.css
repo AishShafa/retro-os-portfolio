@@ -17,6 +17,8 @@
       font-weight: 700;
       letter-spacing: .05em;
       line-height: 1.2;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
       text-transform: uppercase;
     }
 
@@ -47,19 +49,18 @@
     .contact-form textarea:focus { border-color: var(--hot); }
 
     .contact-form .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      display: inline-block;
       margin-top: 9px;
-      padding: 9px 18px;
-      border-radius: 999px;
+      padding: 7px 14px;
+      border-radius: 8px;
       background: var(--ruby);
-      font-size: 11px;
+      font: 700 12px "DM Sans", sans-serif;
     }
 
     .contact-form .btn:hover,
     .contact-form .btn:focus-visible { background: var(--hot); }
     .contact-form .btn:focus-visible { outline-color: var(--ruby); }
+    .contact-form .btn:disabled { cursor: wait; opacity: .7; }
+    .contact-form .form-status { min-height: 1.4em; margin: 8px 0 0; font-size: 11px; }
 .feature-contact .contact-grid, .feature-contact .contact-form { width:100%; max-width:100%; }
 @media (max-width: 430px) { .feature-contact .contact-fields { grid-template-columns:1fr; } }
