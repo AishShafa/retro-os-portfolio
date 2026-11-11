@@ -2,8 +2,6 @@
 
 A retro-inspired portfolio website designed as a desktop operating system interface. This project presents work experience, education, skills, projects, and contact details in a playful, interactive layout inspired by classic desktop computing.
 
-## Overview
-
 Retro OS Portfolio is a single-page personal portfolio experience built with HTML, CSS, and JavaScript. The interface mimics a desktop environment, where visitors can click icons to open windows showing different sections of the portfolio. It combines nostalgic visual design with modern portfolio storytelling.
 
 ## Features
@@ -123,57 +121,9 @@ retro-os-portfolio/
 └──
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- A modern web browser
-
-### Run locally
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/AishShafa/retro-os-portfolio.git
-cd retro-os-portfolio
-```
-
-2. Start a local web server:
-
-```bash
-python -m http.server 8000
-```
-
-3. Open the project in a browser:
-
-```text
-http://localhost:8000
-```
-
-## Usage
-
-- Open the landing page to view the retro desktop interface.
-- Click the desktop icons to open different portfolio sections.
-- Browse projects, experience, education, skills, and contact information.
-- Use the CV shortcut to download the résumé.
-
-## Customization
-
-To personalize the project:
-
-- Update profile and contact information in the HTML pages
-- Replace assets in the `assets/` folder
-- Adjust styling in `styles.css` and the files within `styles/`
-- Update script behavior in `script.js` and the files in `scripts/`
 
 ## Notes
 
-This project is a static front-end portfolio and does not require a build pipeline or dependency installation. It can be deployed on GitHub Pages, Netlify, Vercel, or any static hosting service.
-
-## Contact
-
-Aishath Shafa
-
-GitHub: https://github.com/AishShafa
-LinkedIn: https://www.linkedin.com/in/aishathshafa/
+This project is a static front-end portfolio and does not require a build pipeline or dependency installation so that it can be deployed on Github pages which hosts only static websites.
+www.linkedin.com/in/aishathshafa/
 Email: aishathshafaofficial@gmail.com
