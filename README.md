@@ -1,6 +1,6 @@
 # Retro OS Portfolio
 
-This isa a retro-inspired personal portfolio website designed as a desktop operating system interface. The project presents my work experience, education, skills, projects, and contact details in an interactive, nostalgic layout inspired by classic desktop computing.
+This is a a retro inspired portfolio website designed as a desktop operating system interface. The project presents my work experience, education, skills, projects, and contact details in an interactive, nostalgic layout inspired by classic desktop computing.
 
 ## Features
 
